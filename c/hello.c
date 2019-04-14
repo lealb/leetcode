@@ -1,5 +1,15 @@
-#include<stdio.h>
-int main(){
-    printf("hello world\n");
+#include <stdio.h>
+int swap(int a, int b)
+{
+    int temp;
+    temp = a;
+    a = b;
+    b = temp;
+}
+int main()
+{
+    int a = 1, b = 2;
+    swap(1, 2);
+    printf("%d,%d", a, b);
     return 0;
 }
