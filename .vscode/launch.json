@@ -8,10 +8,17 @@
             "type": "java",
             "name": "CodeLens (Launch) - Hello",
             "request": "launch",
-            "mainClass": "java.Hello"
+            "mainClass": "com.test.Hello"
         },
         {
-            "name": "(gdb) Launch",
+            "name": "Python3",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "C/C++",
             "type": "cppdbg",
             "request": "launch",
             "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
@@ -22,6 +29,7 @@
             "externalConsole": false,
             "MIMode": "gdb",
             "miDebuggerPath": "D:/MinGW/mingw64/bin/gdb.exe",
+            "preLaunchTask": "g++",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
