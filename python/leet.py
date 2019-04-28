@@ -3,7 +3,7 @@ def reverse(value):
         value=str(value)[1:]
     else:
         value=str(value)
-    length=len(value)
+    # length=len(value)
     return value[::-1]
 
 
