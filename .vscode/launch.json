@@ -6,9 +6,9 @@
     "configurations": [
         {
             "type": "java",
-            "name": "CodeLens (Launch) - Hello",
+            "name": "Java - Hello",
             "request": "launch",
-            "mainClass": "com.test.Hello"
+            "mainClass": "com.hello.Hello"
         },
         {
             "name": "Python3",
