@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include<math.h>
 void swap(int a, int b)
 {
     int temp;
@@ -22,15 +23,29 @@ void prove(int n)
         k += 1;
     }
 }
+void solve(int a,int b,int c){
+    printf("fun: %dx^2+%dx+%d\n",a,b,c);
+    double x1=0,x2=0;
+    double flag=b*b-4*a*c;
+    if (flag>0)
+    {
+        x1=(-b+sqrt(flag))/2*a;
+        x2=(-b-sqrt(flag))/2*a;
+    }
+    else if(flag==0){
+        x1=x2=-b/2.0*a;
+    }
+    else if(flag<0){
+        // 无实数解
+        printf("no\n");
+    }
+    printf("slove: x1=%.4lf,x2=%.4lf\n",x1,x2);
+}
 int main()
 {
-    int a = 1, b = 2;
-    swap(1, 2);
-    printf("%d,%d\n", a, b);
-    prove(0);
-    printf("*******************\n");
-    prove(1);
-    printf("*******************\n");
-    prove(2);
+    int a ,b,c;
+    printf("input a b c:");
+    scanf("%d%d%d",&a,&b,&c);
+    solve(a,b,c);
     return 0;
 }

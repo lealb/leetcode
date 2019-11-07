@@ -4,6 +4,13 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+        
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - App",
+            "request": "launch",
+            "mainClass": "app.App"
+        },
         {
             "type": "java",
             "name": "CodeLens (Launch) - Test",
@@ -17,10 +24,19 @@
             "mainClass": "com.hello.Hello"
         },
         {
+            "name": "Python2",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "pythonPath": "D:\\Anaconda3\\envs\\python27\\python.exe",
+            "console": "integratedTerminal"
+        },
+        {
             "name": "Python3",
             "type": "python",
             "request": "launch",
             "program": "${file}",
+            "pythonPath": "D:\\Anaconda3\\pythonw.exe",
             "console": "integratedTerminal"
         },
         {
