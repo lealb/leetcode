@@ -49,5 +49,9 @@
     "maven.view": "hierarchical",
     "python.formatting.provider": "autopep8",
     "python.pythonPath": "D:\\Anaconda3\\python.exe",
-    "python.dataScience.jupyterServerURI": "local"
+    "python.dataScience.jupyterServerURI": "local",
+    "files.associations": {
+        "iostream": "cpp",
+        "ostream": "cpp"
+    }
 }

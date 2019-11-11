@@ -7,3 +7,4 @@
 scala/spark/target
 scala/spark/.settings
 build
+*.exe
