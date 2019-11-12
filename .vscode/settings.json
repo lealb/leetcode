@@ -3,8 +3,8 @@
     "code-runner.executorMap": {
         "javascript": "node",
         "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
-        "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
-        "cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+        "c": "cd $dir && gcc $fileName -o bin/$fileNameWithoutExt && bin\\$fileNameWithoutExt",
+        "cpp": "g++ $fileName -o bin/$fileNameWithoutExt && bin\\$fileNameWithoutExt",
         "objective-c": "cd $dir && gcc -framework Cocoa $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
         "php": "php",
         "python": "D:\\Anaconda3\\python.exe -u",
@@ -52,6 +52,7 @@
     "python.dataScience.jupyterServerURI": "local",
     "files.associations": {
         "iostream": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "iosfwd": "cpp"
     }
 }
