@@ -5,7 +5,9 @@
 #include <ctime>
 #include <cstdlib>
 using namespace std;
-
+/*
+* 字符串、向量、数组
+*/
 class Salse_data
 {
     friend istream &operator>>(istream &, Salse_data &);

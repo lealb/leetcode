@@ -2,7 +2,9 @@
 #include <math.h>
 #include <typeinfo>
 using namespace std;
-
+/*
+* 变量和基本类型
+*/
 void p_3()
 {
     unsigned u = 10, u2 = 42;

@@ -3,7 +3,9 @@
 #include <ctime>
 #include <cstdlib>
 using namespace std;
-
+/*
+* 表达式
+*/
 // get random numbers by n
 vector<int> getNumbers(int n)
 {

@@ -1,6 +1,9 @@
 #include <iostream>
 #include "include/Sales_item.h"
 using namespace std;
+/*
+* 开始
+*/
 void p_3()
 {
     cout << "Input two numbers: \n";
