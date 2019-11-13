@@ -117,11 +117,60 @@ void p_17()
         cout << "s2->s1\n";
     }
 }
+
+void p_20()
+{
+    string currString, preString;
+    bool flag = true;
+    while (cin >> currString)
+    {
+        //islower isupper
+        if (islower(currString[0]))
+        {
+            continue;
+        }
+        if (currString == preString)
+        {
+            cout << "the same word is :" << currString << endl;
+            flag = false;
+            break;
+        }
+        preString = currString;
+    }
+    if (flag)
+    {
+        cout << "not same word\n";
+    }
+}
+void p_23()
+{
+    int a, b;
+    // cin >> a >> b;
+    while (cin >> a >> b)
+    {
+        if (!b)
+        {
+            throw runtime_error("b is not zero\n");
+        }
+
+        try
+        {
+            cout << static_cast<float>(a) / b << endl;
+        }
+        catch (runtime_error err)
+        {
+            cout << "zero\n";
+            cout << err.what() << '\n';
+        }
+    }
+}
 int main()
 {
     // p_11();
     // p_14();
-    p_17();
+    // p_17();
     // until 5-20
+    // p_20();
+    p_23();
     return 0;
 }
