@@ -1,27 +1,17 @@
-package app;
+﻿package app;
 
 public class App {
-    public static void main(String[] args) throws Exception {
-        // 数组大小
-        int size = 10;
-        // 定义数组
-        double[] myList = new double[size];
-        myList[0] = 5.6;
-        myList[1] = 4.5;
-        myList[2] = 3.3;
-        myList[3] = 13.2;
-        myList[4] = 4.0;
-        myList[5] = 34.33;
-        myList[6] = 34.0;
-        myList[7] = 45.45;
-        myList[8] = 99.993;
-        myList[9] = 11123;
-        
-        double total = 0;
-        for (int i = 0; i < size; i++) {
-            total += myList[i];
+
+    public static void testNull(String str) {
+        if (str!=null) {
+            System.out.println(str);
         }
-        System.out.println("sum： " + total);
+
+    }
+    public static void main(String[] args) throws Exception {
+      
         System.out.println("Hello Leal");
+        // 
+        testNull(null);
     }
 }
