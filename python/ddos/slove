@@ -1,0 +1,24 @@
+1.去除非数值列
+    主要有两点考虑
+    1.很多算法模型仅仅只能处理非数值类型的数据，如KNN，XGB等
+    2.本次分析的数据在非数值列没有任何意义，其中可以加上一些特征如端口、协议作为分析，在ddos_feature_importance里面有描述
+2.直接调用函数是不好保留，可以通过
+    from sklearn.metrics import accuracy_score
+    return accuracy_score(y_test, y_pred)
+    得到更精确的
+    print(".4f%") 方法也可以强制保留4位
+3. 特征重要性图
+    需要保留源数据信息,这个需要把数据提出来，重画一张图
+    最简单做个对应吧
+4.算法，处理数据
+    改进点，对数据准确率影响不是很大，先写理论吧，看要不要补充
+5.有关时间，在jupyter上面第一行使用魔术方法就行
+    #1
+    %%time
+
+    #2
+    import time
+    start=time.time()
+    要计算的代码部分
+    end=time.time()
+    cost=end-start
