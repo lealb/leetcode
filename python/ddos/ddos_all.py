@@ -65,7 +65,7 @@ def deal_nan_inf(X):
     return np.nan_to_num(X)
 
 
-def convern_tofloat32(X):
+def convert_tofloat32(X):
     """
     由于算法对数据集类型的不同，转换函数
     """
@@ -264,7 +264,7 @@ def get_report(y_test, y_pred):
 
     # F1-score
     from sklearn.metrics import classification_report
-    return classification_report(y_test, y_pred)
+    return classification_report(y_test, y_pred,digits=4)
 
 
 # 获得精确率与召回率
@@ -284,15 +284,16 @@ sns.set_style("whitegrid")
 
 def get_aoc(y_test, y_pred):
     """
-    y_test：实际的标签, y_pred：预测的概率值
+    y_test：实际的标签
+    y_pred：预测的概率值
     """
     fpr, tpr, thresholds = roc_curve(y_test, y_pred)
     roc_auc = auc(fpr, tpr)
     # 画图，只需要plt.plot(fpr,tpr),变量roc_auc只是记录auc的值，通过auc()函数能计算出来
-    plt.plot(fpr, tpr, lw=1, label='ROC(area = %0.2f)' % (roc_auc))
+    plt.plot(fpr, tpr, lw=1, label='ROC(area = %0.4f)' % (roc_auc))
     plt.xlabel("FPR (False Positive Rate)")
     plt.ylabel("TPR (True Positive Rate)")
-    plt.title("Receiver Operating Characteristic, ROC(AUC = %0.2f)" %
+    plt.title("Receiver Operating Characteristic, ROC(AUC = %0.4f)" %
               (roc_auc))
     # plt.show()
 
@@ -324,7 +325,7 @@ if __name__ == "__main__":
     # 简单处理
     # print(X[0],y[0])
     y = label_encoder(y)
-    X = convern_tofloat32(X)
+    X = convert_tofloat32(X)
     # 获得数据集
     X_train, X_test, y_train, y_test = split_X_y(X, y)
     # 训练
