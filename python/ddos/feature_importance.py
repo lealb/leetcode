@@ -178,17 +178,8 @@ def add_feature(file, X_drop10, xgb_drop10_model,y):
         X_new_train, y_train).predict(X_new_test)))
 
 # 算法改进
-class LeastSquaresLoss():
-    """Least squares loss"""
-
-    def gradient(self, actual, predicted):
-        return actual - predicted
-
-    def hess(self, actual, predicted):
-        return np.ones_like(actual)
-
 
 if __name__ == "__main__":
     # 更改文件路径
     file_path = "D:\\01-Work\\LeetCode\\python\\ddos\\dataset\\fin.csv"
-    # compare_pca(file_path)
+    compare_pca(file_path)
