@@ -264,7 +264,7 @@ def get_report(y_test, y_pred):
 
     # F1-score
     from sklearn.metrics import classification_report
-    return classification_report(y_test, y_pred,digits=4)
+    return classification_report(y_test, y_pred, digits=4)
 
 
 # 获得精确率与召回率
@@ -282,7 +282,7 @@ sns.set_style("whitegrid")
 # %matplotlib inline
 
 
-def get_aoc(y_test, y_pred):
+def get_aoc(y_test, y_pred, names):
     """
     y_test：实际的标签
     y_pred：预测的概率值
@@ -291,10 +291,9 @@ def get_aoc(y_test, y_pred):
     roc_auc = auc(fpr, tpr)
     # 画图，只需要plt.plot(fpr,tpr),变量roc_auc只是记录auc的值，通过auc()函数能计算出来
     plt.plot(fpr, tpr, lw=1, label='ROC(area = %0.4f)' % (roc_auc))
-    plt.xlabel("FPR (False Positive Rate)")
-    plt.ylabel("TPR (True Positive Rate)")
-    plt.title("Receiver Operating Characteristic, ROC(AUC = %0.4f)" %
-              (roc_auc))
+    # plt.xlabel("FPR")
+    plt.ylabel("TPR")
+    plt.title("%s ROC(AUC = %0.4f)" % (names, roc_auc))
     # plt.show()
 
 
@@ -311,26 +310,25 @@ def get_evaluation_index(y_test, y_pred):
     print("2.average_precision_score: %.4f" %
           get_average_precision_score(y_test, y_pred))
     print("3.confusion_matrix:\n%s" % get_confusion_matrix(y_test, y_pred))
-    print("4.acuracyc&recall: (%.4f,%.4f)" % get_acc_recall(y_test, y_pred))
-    print("5.get_report:\n%s" % get_report(y_test, y_pred))
-    print("6.roc_auc_score: %s" % get_roc_score(y_test, y_pred))
-    #print("7.AUC:")
+    #print("4.acuracyc&recall: (%.4f,%.4f)" % get_acc_recall(y_test, y_pred))
+    print("4.get_report:\n%s" % get_report(y_test, y_pred))
+    print("5.roc_auc_score: %s" % get_roc_score(y_test, y_pred))
+    # print("7.AUC:")
     #get_aoc(y_test, y_pred)
 
 
-# 主函数
-if __name__ == "__main__":
-    file_path = "D:\\01-Work\\LeetCode\\python\\ddos\\dataset\\fin.csv"
-    X, y = get_data_set(file_path)
-    # 简单处理
-    # print(X[0],y[0])
-    y = label_encoder(y)
-    X = convert_tofloat32(X)
-    # 获得数据集
-    X_train, X_test, y_train, y_test = split_X_y(X, y)
-    # 训练
-    dt = dt_model(X_train, y_train)
-    dt_y_pred = dt.predict(X_test)
+def get_data(file_path):
+    import pandas as pd
+    data = pd.read_csv(file_path)
+    new_data = data.to_numpy()
+    # 拆分特征列和目标列
+    X, y = new_data[:, :-1], new_data[:, -1]
+    # 数值型转换类型
+    X = X.astype(float)
+    return X, y
+
+
+def main():
     # 评估
     # print("1.accuracy_score: %.4f" % get_accuracy_score(y_test, y_pred))
     #get_evaluation_index(y_test, dt_y_pred)
@@ -422,12 +420,36 @@ if __name__ == "__main__":
     # auc图形比较
     plt.figure()
     plt.subplot(221)
-    get_aoc(y_test, dt_y_pred)
+    get_aoc(y_test, xgb_y_pred, "xgb")
     plt.subplot(222)
-    get_aoc(y_test, xgb_y_pred)
+    get_aoc(y_test, dt_y_pred, "dt")
     plt.subplot(223)
-    get_aoc(y_test, knn_y_pred)
+    get_aoc(y_test, knn_y_pred, "knn")
     plt.subplot(224)
-    get_aoc(y_test, rf_y_pred)
+    get_aoc(y_test, rf_y_pred, "rf")
     plt.show()
 
+def get_data(file_path):
+    # import pandas as pd
+    data = pd.read_csv(file_path)
+    new_data = data.to_numpy()
+    # 拆分特征列和目标列
+    X, y = new_data[:, :-1], new_data[:, -1]
+    # 数值型转换类型
+    X = X.astype(float)
+    return X, y
+# 主函数
+if __name__ == "__main__":
+    file_path = "D:\\01-Work\\LeetCode\\python\\ddos\\dataset\\fin.csv"
+    file="C:\\Users\\leal\\Desktop\\Tmp\\balanced_ddos_test_20.csv"
+    # X, y = get_data_set(file_path)
+    X,y=get_data(file)
+    # 简单处理
+    # print(X[0],y[0])
+    y = label_encoder(y)
+    X = convert_tofloat32(X)
+    # 获得数据集
+    X_train, X_test, y_train, y_test = split_X_y(X, y)
+    # 训练
+    dt = dt_model(X_train, y_train)
+    dt_y_pred = dt.predict(X_test)
