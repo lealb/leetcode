@@ -403,7 +403,7 @@ def plot_importance(X, y):
     # 使显示图标自适应
     plt.rcParams['figure.autolayout'] = True
     xgb.plot_importance(model, title='特征重要性排序', xlabel='得分',
-                        ylabel='特征', max_num_features=20)
+                        ylabel='特征', max_num_features=25)
     plt.show()
 
 

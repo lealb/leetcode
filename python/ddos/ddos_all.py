@@ -317,17 +317,6 @@ def get_evaluation_index(y_test, y_pred):
     #get_aoc(y_test, y_pred)
 
 
-def get_data(file_path):
-    import pandas as pd
-    data = pd.read_csv(file_path)
-    new_data = data.to_numpy()
-    # 拆分特征列和目标列
-    X, y = new_data[:, :-1], new_data[:, -1]
-    # 数值型转换类型
-    X = X.astype(float)
-    return X, y
-
-
 def main():
     # 评估
     # print("1.accuracy_score: %.4f" % get_accuracy_score(y_test, y_pred))
@@ -429,27 +418,34 @@ def main():
     get_aoc(y_test, rf_y_pred, "rf")
     plt.show()
 
+
 def get_data(file_path):
     # import pandas as pd
     data = pd.read_csv(file_path)
+      # 暂时剔除无意义的特征
+    del data['Row']
     new_data = data.to_numpy()
     # 拆分特征列和目标列
     X, y = new_data[:, :-1], new_data[:, -1]
     # 数值型转换类型
     X = X.astype(float)
     return X, y
+
+
 # 主函数
 if __name__ == "__main__":
     file_path = "D:\\01-Work\\LeetCode\\python\\ddos\\dataset\\fin.csv"
-    file="C:\\Users\\leal\\Desktop\\Tmp\\balanced_ddos_test_20.csv"
+    file = "C:\\Users\\leal\\Desktop\\Tmp\\balanced_ddos_test_20.csv"
     # X, y = get_data_set(file_path)
-    X,y=get_data(file)
+    X, y = get_data(file)
     # 简单处理
     # print(X[0],y[0])
     y = label_encoder(y)
     X = convert_tofloat32(X)
+    X = max_min_sc(X)
     # 获得数据集
     X_train, X_test, y_train, y_test = split_X_y(X, y)
     # 训练
     dt = dt_model(X_train, y_train)
     dt_y_pred = dt.predict(X_test)
+    get_evaluation_index(y_test, dt_y_pred)
