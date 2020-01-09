@@ -423,7 +423,7 @@ def get_data(file_path):
     # import pandas as pd
     data = pd.read_csv(file_path)
       # 暂时剔除无意义的特征
-    del data['Row']
+    #del data['Row']
     new_data = data.to_numpy()
     # 拆分特征列和目标列
     X, y = new_data[:, :-1], new_data[:, -1]
@@ -435,7 +435,7 @@ def get_data(file_path):
 # 主函数
 if __name__ == "__main__":
     file_path = "D:\\01-Work\\LeetCode\\python\\ddos\\dataset\\fin.csv"
-    file = "C:\\Users\\leal\\Desktop\\Tmp\\balanced_ddos_test_20.csv"
+    file = "C:\\Users\\leal\\Desktop\\Tmp\\curr_ddos_dataset\\balanced_ddos_test_corr_25.csv"
     # X, y = get_data_set(file_path)
     X, y = get_data(file)
     # 简单处理

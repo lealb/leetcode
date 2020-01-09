@@ -12,6 +12,9 @@ import pandas as pd
 import numpy as np
 import math
 
+pd.set_option("display.max_columns", None)
+pd.set_option("display.max_rows", None)
+
 
 class recommender(object):
     def o_distance(self, usr1, usr2):
@@ -135,7 +138,7 @@ def get_corr(file_path):
     return other_data
 
 
-if __name__ == "__main__":
+def main():
     path = 'python/ddos/dataset/Movie_Ratings.csv'
     path1 = 'python/ddos/dataset/fin.csv'
     # r = recommender(path, 'vanessa')
@@ -173,14 +176,31 @@ if __name__ == "__main__":
                 'Bwd IAT Max', 'Bwd PSH Flags', 'Fwd Header Len', 'Bwd Header Len', 'Bwd Pkts/s', 'Subflow Fwd Pkts', 'Subflow Bwd Pkts', 'Subflow Bwd Byts', 'Active Mean', 'Active Std', 'Active Max', 'Label']
     names_25 = ['Flow Duration', 'Tot Fwd Pkts', 'Tot Bwd Pkts', 'TotLen Bwd Pkts', 'Flow IAT Mean', 'Flow IAT Std', 'Flow IAT Max', 'Flow IAT Min', 'Fwd IAT Std', 'Fwd IAT Max', 'Bwd IAT Mean', 'Bwd IAT Std',
                 'Bwd IAT Max', 'Bwd PSH Flags', 'Fwd Header Len', 'Bwd Header Len', 'Bwd Pkts/s', 'Subflow Fwd Pkts', 'Subflow Bwd Pkts', 'Subflow Bwd Byts', 'Active Mean', 'Active Std', 'Active Max', 'Active Min', 'Idle Std', 'Label']
-    banaled_ddos = "C:\\Users\\leal\\Desktop\\Tmp\\balanced_ddos_test.csv"
-    unbanaled_ddos = "C:\\Users\\leal\\Desktop\\Tmp\\unbalanced_ddos_test.csv"
+    banaled_ddos = "C:\\Users\\l\\Desktop\\Tmp\\balanced_ddos_test.csv"
+    unbanaled_ddos = "C:\\Users\\l\\Desktop\\Tmp\\unbalanced_ddos_test.csv"
+
+    first_names_20 = ['Fwd Seg Size Min', 'SYN Flag Cnt', 'PSH Flag Cnt', 'Down/Up Ratio', 'Pkt Len Min', 'Bwd Pkt Len Min', 'Fwd Pkt Len Min', 'RST Flag Cnt', 'ECE Flag Cnt', 'Init Fwd Win Byts',
+                      'Fwd Pkt Len Max', 'Pkt Len Std', 'Pkt Len Var', 'Fwd Pkt Len Mean', 'Fwd Seg Size Avg', 'Init Bwd Win Byts', 'Pkt Len Mean', 'Pkt Size Avg', 'Bwd Seg Size Avg', 'Bwd Pkt Len Mean','Label']
+    first_names_25 = ['Fwd Seg Size Min', 'SYN Flag Cnt', 'PSH Flag Cnt', 'Down/Up Ratio', 'Pkt Len Min', 'Bwd Pkt Len Min', 'Fwd Pkt Len Min', 'RST Flag Cnt', 'ECE Flag Cnt', 'Init Fwd Win Byts', 'Fwd Pkt Len Max', 'Pkt Len Std',
+                      'Pkt Len Var', 'Fwd Pkt Len Mean', 'Fwd Seg Size Avg', 'Init Bwd Win Byts', 'Pkt Len Mean', 'Pkt Size Avg', 'Bwd Seg Size Avg', 'Bwd Pkt Len Mean', 'Bwd Pkt Len Std', 'Fwd PSH Flags', 'ACK Flag Cnt', 'Pkt Len Max', 'Fwd Pkt Len Std','Label']
     # save
-    pd.read_csv(banaled_ddos)[names_20].to_csv(
-        "C:\\Users\\leal\\Desktop\\Tmp\\balanced_ddos_test_corr_20.csv", index=False)
-    pd.read_csv(banaled_ddos)[names_25].to_csv(
-        "C:\\Users\\leal\\Desktop\\Tmp\\balanced_ddos_test_corr_25.csv", index=False)
-    pd.read_csv(unbanaled_ddos)[names_20].to_csv(
-        "C:\\Users\\leal\\Desktop\\Tmp\\unbalanced_ddos_test_corr_20.csv", index=False)
-    pd.read_csv(unbanaled_ddos)[names_25].to_csv(
-        "C:\\Users\\leal\\Desktop\\Tmp\\unbalanced_ddos_test_corr_25.csv", index=False)
+    pd.read_csv(banaled_ddos)[first_names_20].to_csv(
+        "C:\\Users\\l\\Desktop\\Tmp\\balanced_ddos_test_corr_f20.csv", index=False)
+    pd.read_csv(banaled_ddos)[first_names_25].to_csv(
+        "C:\\Users\\l\\Desktop\\Tmp\\balanced_ddos_test_corr_f25.csv", index=False)
+    pd.read_csv(unbanaled_ddos)[first_names_20].to_csv(
+        "C:\\Users\\l\\Desktop\\Tmp\\unbalanced_ddos_test_corr_f20.csv", index=False)
+    pd.read_csv(unbanaled_ddos)[first_names_25].to_csv(
+        "C:\\Users\\l\\Desktop\\Tmp\\unbalanced_ddos_test_corr_f25.csv", index=False)
+
+
+if __name__ == "__main__":
+    # path1 = 'python/ddos/dataset/fin.csv'
+    # # r = recommender(path, 'vanessa')
+    # # r.run()
+    # ddos_data = get_corr(path1)
+    # ddos_data["Label"] = ddos_data["Label"].map({"Benign": 0, "ddos": 1})
+    # corr_matrix = ddos_data.corr()
+    # #  data.reindex(data.c2.abs().sort_values(ascending=False).index).to_csv("pierxun_sorted")
+    # print(corr_matrix[sorted(corr_matrix["Label"].values)]["Label"])
+    main()
