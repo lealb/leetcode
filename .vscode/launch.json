@@ -11,14 +11,6 @@
             "mainClass": "app.App"
         },
         {
-            "name": "Python2",
-            "type": "python",
-            "request": "launch",
-            "program": "${file}",
-            "pythonPath": "D:\\Anaconda3\\envs\\python27\\python.exe",
-            "console": "integratedTerminal"
-        },
-        {
             "name": "Python3",
             "type": "python",
             "request": "launch",

@@ -4,14 +4,8 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "D:/MinGW/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++",
-                "D:/MinGW/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32",
-                "D:/MinGW/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward",
-                "D:/MinGW/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include",
-                "D:/MinGW/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed",
-                "D:/MinGW/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include",
-                "D:/OpenCV/build/x64/vc15/lib",
-                "D:/OpenCV/build/include"
+                "D:/OpenCV/build/include",
+                "D:/OpenCV/build/include/opencv2"
             ],
             "defines": [
                 "_DEBUG",
@@ -25,15 +19,9 @@
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": "",
                 "path": [
-                    "${workspaceFolder}/**",
-                    "D:/MinGW/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++",
-                    "D:/MinGW/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32",
-                    "D:/MinGW/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward",
-                    "D:/MinGW/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include",
-                    "D:/MinGW/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed",
-                    "D:/MinGW/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include",
-                    "D:/OpenCV/build/x64/vc15/lib",
-                    "D:/OpenCV/build/include"
+                    "${workspaceFolder}/**",  
+                    "D:/OpenCV/build/include",
+                    "D:/OpenCV/build/include/opencv2"
                 ]
             }
         }

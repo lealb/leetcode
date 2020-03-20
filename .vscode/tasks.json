@@ -5,13 +5,7 @@
         "-g",
         "${file}",
         "-o",
-        "${fileDirname}/${fileBasenameNoExtension}.exe",
-        "-I",
-        "D:/OpenCV/build/include",
-        "-I",
-        "D:/OpenCV/build/include/opencv2",
-        "-L",
-        "D:/OpenCV/build/x64/vc15/lib/"
+        "${fileDirname}/${fileBasenameNoExtension}.exe"
     ],
     "problemMatcher": {
         "owner": "cpp",
