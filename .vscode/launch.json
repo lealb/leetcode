@@ -15,7 +15,7 @@
             "type": "python",
             "request": "launch",
             "program": "${file}",
-            "pythonPath": "D:\\Anaconda3\\pythonw.exe",
+            "pythonPath": "D:\\Python38\\python.exe",
             "console": "integratedTerminal"
         },
         {
