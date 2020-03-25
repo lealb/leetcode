@@ -12,5 +12,6 @@ def test_canny(img):
 
 
 if __name__ == "__main__":
-    img = "file/img/tt.jpg"
+    # D:/02-Money/leetcode/c++/opencv3_tutorial_by_qianmo/file/img/tt.jpg
+    img = "D:/02-Money/leetcode/c++/opencv3_tutorial_by_qianmo/file/img/tt.jpg"
     test_canny(img)
