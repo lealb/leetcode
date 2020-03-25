@@ -142,6 +142,21 @@ int openCamera(int decice)
     // the camera will be deinitialized automatically in VideoCapture destructor
     return 0;
 }
+
+void testAdd()
+{
+    Mat srcImg = imread("file/img/dota_jugg.jpg");
+    Mat logo = imread("file/img/dota_logo.jpg");
+    // imshow("srcImg", srcImg);
+    // imshow("logo", logo);
+    // roi
+    Mat imgROI = srcImg(Rect(500, 200, logo.cols, logo.rows));
+    // imshow("ROI", imgROI);
+    //InputArray src1, double alpha, InputArray src2,double beta, double gamma, OutputArray dst, int dtype = -1
+    addWeighted(imgROI, 0.5, logo, 0.3, 0.1, imgROI);
+    imshow("dstImg", srcImg);
+    waitKey(0);
+}
 /**
  * argc 为整数，用来统计运行程序送给main函数的命令行参数的个数
  * *argv[] 字符串数组，用来存放指向字符串参数的指针数组，每个元素指向一个参数
@@ -154,6 +169,7 @@ int main(int argc, char const *argv[])
     // getMeanFilter(imgPath);
     // getEdgeDetection(imgPath);
     // readVideo(0);
-    openCamera(1);
+    // openCamera(1);
+    testAdd();
     return 0;
 }
