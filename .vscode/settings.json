@@ -4,7 +4,7 @@
         "javascript": "node",
         "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
         "c": "cd $dir && gcc $fileName -o bin/$fileNameWithoutExt && bin\\$fileNameWithoutExt",
-        "cpp": "cd $dir && g++ $fileName -o bin/$fileNameWithoutExt -I D:/OpenCV/build/include -I D:/OpenCV/build/include/opencv2 -L D:/OpenCV/build/x64/MinGW/lib -l opencv_core420 -l opencv_imgproc420 -l opencv_imgcodecs420 -l opencv_video420 -l opencv_ml420 -l opencv_highgui420 -l opencv_objdetect420 -l opencv_flann420 -l opencv_imgcodecs420 -l opencv_photo420 -l opencv_videoio420 && bin\\$fileNameWithoutExt",
+        "cpp": "cd $dir && g++ $fileName -o bin/$fileNameWithoutExt && bin\\$fileNameWithoutExt",
         "objective-c": "cd $dir && gcc -framework Cocoa $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
         "php": "php",
         "python": "python -u",
