@@ -1,59 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
 #define SIZE 50000
-
-int hash(int key)
-{
-    int r = key % SIZE;
-    return r < 0 ? r + SIZE : r;
-}
-
-void insert(int *keys, int *values, int key, int value)
-{
-    int index = hash(key);
-    while (values[index])
-    {
-        index = (index + 1) % SIZE;
-    }
-    keys[index] = key;
-    values[index] = value;
-}
-
-int search(int *keys, int *values, int key)
-{
-    int index = hash(key);
-    while (values[index])
-    {
-        if (keys[index] == key)
-        {
-            return values[index];
-        }
-        index = (index + 1) % SIZE;
-    }
-    return 0;
-}
-/**
- * Note: The returned array must be malloced, assume caller calls free().
- */
-int *twoSum(int *nums, int numsSize, int target, int *returnSize)
-{
-    *returnSize = 2;
-    int keys[SIZE];
-    int values[SIZE] = {0};
-    for (int i = 0; i < numsSize; i++)
-    {
-        int complements = target - nums[i];
-        int value = search(keys, values, complements);
-        if (value)
-        {
-            int *indices = (int *)malloc(sizeof(int) * 2);
-            indices[0] = value - 1;
-            indices[1] = i;
-            return indices;
-        }
-        insert(keys, values, nums[i], i + 1);
-    }
-    return NULL;
-}
 
 /**
  * 
@@ -61,7 +8,7 @@ int *twoSum(int *nums, int numsSize, int target, int *returnSize)
  * Obvious brute force approach. O(n^2) time, O(1) space
  * 
  */
-int *twoSum_1(int *nums, int numsSize, int target)
+int *twoSum_1(int *nums, int numsSize, int target, int *returnSize)
 {
     int *ret = (int *)malloc(2 * sizeof(int));
     for (ret[0] = 0; ret[0] < numsSize; ++ret[0])
@@ -74,6 +21,7 @@ int *twoSum_1(int *nums, int numsSize, int target)
             }
         }
     }
+    *returnSize = 2;
     return NULL;
 }
 // https://leetcode.com/problems/two-sum/discuss/351702/C-4ms-99-using-hashtable
@@ -175,13 +123,15 @@ int cmp(const void *a, const void *b)
     return data[*(int *)a] - data[*(int *)b];
 }
 
-int *twoSum(int *nums, int numsSize, int target, int *returnSize)
+int *twoSum_3(int *nums, int numsSize, int target, int *returnSize)
 {
+    *returnSize = 2;
     int l, r, vl, vr;
     int *ix = (int *)malloc(numsSize * sizeof(int));
     int *res = (int *)malloc(2 * sizeof(int));
-    for (r = 0; r < numsSize; r++)
+    for (r = 0; r < numsSize; r++){
         ix[r] = r;
+    }
 
     data = nums;
     qsort(ix, numsSize, sizeof(int), cmp); // sort indexes by value
@@ -202,7 +152,6 @@ int *twoSum(int *nums, int numsSize, int target, int *returnSize)
     }
     res[0] = ix[l];
     res[1] = ix[r];
-    *returnSize = 2;
     free(ix);
     return res;
 }
@@ -211,67 +160,69 @@ int *twoSum(int *nums, int numsSize, int target, int *returnSize)
  * The hashmap solution for c++ is nice and simple
  * the c takes a bit more work and uses the external uthash (which is automatically included for c solutions).
  */
-struct number_hash
+/**
+ * 自定义hash 函数
+ */
+int hash(int key)
 {
-    int value;
-    int index;
-    UT_hash_handle hh;
-};
-
-void destroy_table(struct number_hash **table)
-{
-    struct number_hash *curr;
-    struct number_hash *tmp;
-
-    HASH_ITER(hh, *table, curr, tmp)
-    {
-        HASH_DEL(*table, curr);
-        free(curr);
-    }
+    int r = key % SIZE;
+    return r < 0 ? r + SIZE : r;
 }
 
-int *twoSum_3(int *nums, int numsSize, int target, int *returnSize)
+void insert(int *keys, int *values, int key, int value)
 {
-    struct number_hash *table = NULL;
-    struct number_hash *element;
-    int *ret = (int *)malloc(2 * sizeof(int));
-    int remaining;
-    for (int i = 0; i < numsSize; ++i)
+    int index = hash(key);
+    while (values[index])
     {
-        remaining = target - nums[i];
-
-        // Find if there has already been an element such that the sum is target
-        HASH_FIND_INT(table, &remaining, element);
-        if (element)
-        {
-            ret[0] = element->index;
-            ret[1] = i;
-            break;
-        }
-
-        // Add the new number to the hash table if it doesn't exist already
-        HASH_FIND_INT(table, &nums[i], element);
-        if (!element)
-        {
-            element = (struct number_hash *)malloc(sizeof(*element));
-            element->value = nums[i];
-            element->index = i;
-
-            HASH_ADD_INT(table, value, element);
-        }
+        index = (index + 1) % SIZE;
     }
+    keys[index] = key;
+    values[index] = value;
+}
 
-    destroy_table(&table);
-
+int search(int *keys, int *values, int key)
+{
+    int index = hash(key);
+    while (values[index])
+    {
+        if (keys[index] == key)
+        {
+            return values[index];
+        }
+        index = (index + 1) % SIZE;
+    }
+    return 0;
+}
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int *twoSum(int *nums, int numsSize, int target, int *returnSize)
+{
     *returnSize = 2;
-    return ret;
+    int keys[SIZE];
+    int values[SIZE] = {0};
+    for (int i = 0; i < numsSize; i++)
+    {
+        int complements = target - nums[i];
+        int value = search(keys, values, complements);
+        if (value)
+        {
+            int *indices = (int *)malloc(sizeof(int) * 2);
+            indices[0] = value - 1;
+            indices[1] = i;
+            return indices;
+        }
+        insert(keys, values, nums[i], i + 1);
+    }
+    return NULL;
 }
+
 int main(int argc, char const *argv[])
 {
-    int nums[] = {3, 2, 7, 11, 15, 1}, target = 9;
+    int nums[] = {3, 2, 3, 11, 15, 1}, target = 6;
     int count = sizeof(nums) / sizeof(nums[0]);
-    int p;
-    int *result = twoSum_1(nums, count, target, p);
+    int *p;
+    int *result = twoSum_3(nums, count, target, p);
     for (int i = 0; i < 2; i++)
     {
         printf("%d ", *(result + i));
