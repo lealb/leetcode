@@ -251,8 +251,12 @@ void mergeOrderedLinkList(ListNode *La, ListNode *Lb)
         r->next = q;
     else
         r->next = p;
+    
     free(Lb);
 }
+/**
+ *  add two list node
+ */
 ListNode *addTwoNumbers(ListNode *l1, ListNode *l2)
 {
     ListNode *p1 = l1;
@@ -288,11 +292,12 @@ int main()
 {
     ListNode *la;
     printf("Input data(end as -1): \n");
-    la = creatLinkList_end();
+    la = creatLinkListEnd();
     printListNode(la);
     ListNode *lb;
     printf("Input data(end as -1): \n");
-    lb = creatLinkList_end();
+    lb = creatLinkListEnd();
     printListNode(lb);
-    printListNode(addTwoNumbers(la, lb));
+    mergeOrderedLinkList(la, lb);
+    printListNode(la);
 }
