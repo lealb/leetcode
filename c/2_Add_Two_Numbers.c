@@ -39,6 +39,5 @@ int main(int argc, char const *argv[])
 {
     struct ListNode l1={2,4,3};
     struct ListNode l2={5,6,4};
-    addTwoNumbers(l1,l2);
     return 0;
 }

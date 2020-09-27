@@ -2,7 +2,7 @@
     "python.linting.pylintEnabled": true,
     "code-runner.executorMap": {
         "javascript": "node",
-        "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
+        "java": "cd $dir && javac -encoding utf-8 -d. $fileName && java app.$fileNameWithoutExt",
         "c": "cd $dir && gcc $fileName -o bin/$fileNameWithoutExt && bin\\$fileNameWithoutExt",
         "cpp": "cd $dir && g++ $fileName -o bin/$fileNameWithoutExt && bin\\$fileNameWithoutExt",
         "objective-c": "cd $dir && gcc -framework Cocoa $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
