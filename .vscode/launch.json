@@ -9,7 +9,7 @@
             "type": "python",
             "request": "launch",
             "program": "${file}",
-            "pythonPath": "D:\\Python38\\python.exe",
+            "pythonPath": "D:\\Python\\Python38\\python.exe",
             "console": "integratedTerminal"
         },
         {

@@ -1,0 +1,5 @@
+LettCode 解法简介
+1. Two Sum
+    1) 暴力解法，双重循环
+    2）Sorting approach. O(nlogn) time, O(n) space
+    3) Hashmap. O(n) time, O(n) space
