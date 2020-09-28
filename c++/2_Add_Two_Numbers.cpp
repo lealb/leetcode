@@ -13,6 +13,15 @@ class Solution
 public:
     ListNode *addTwoNumbers(ListNode *l1, ListNode *l2)
     {
+        // 添加l1 l2null 处理
+        if (l1 == nullptr)
+        {
+            return l2;
+        }
+        if (l2 == nullptr)
+        {
+            return l1;
+        }
         // 使用prenode而不需要单独考虑头节点，以简化代码
         ListNode *prenode = new ListNode(0);
         ListNode *lastnode = prenode;

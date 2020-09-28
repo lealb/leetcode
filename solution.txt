@@ -3,3 +3,48 @@ LettCode 解法简介
     1) 暴力解法，双重循环
     2）Sorting approach. O(nlogn) time, O(n) space
     3) Hashmap. O(n) time, O(n) space
+2. Add Two Numbers
+    考察对单链表的操作使用
+    /**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        int q=0;
+        ListNode result=null;
+        ListNode currentNode=null;
+        boolean flag=false;
+    	while(true) {
+        	int val1=l1!=null?l1.val:0;
+        	int val2=l2!=null?l2.val:0;
+        	l1=l1!=null?l1.next:null;
+        	l2=l2!=null?l2.next:null;
+        	int sum=q+val1+val2;
+        	q=sum/10;
+        	int r=sum%10;
+        	if(result==null) {
+        		result=new ListNode();
+        		result.val=r;
+        		currentNode=result;
+        	}else {
+        		if(l1==null && l2==null) {
+        			if(q==0 && r==0) break;
+        			else if(q==0) flag=true;
+        		}
+        		ListNode nextNode=new ListNode();
+        		nextNode.val=r;
+        		currentNode.next=nextNode;
+        		currentNode=nextNode;
+        		if(flag) break;
+        	}
+    	}
+    	return result;
+    }
+}
