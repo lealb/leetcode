@@ -2,6 +2,7 @@
 #include <vector>
 
 using namespace std;
+#define all(c) c.begin(), c.end()
 class Solution
 {
 public:
@@ -99,6 +100,17 @@ public:
             return binarySearch_1(nums, L, mid - 1, target);
         }
         return target > nums[mid] ? mid + 1 : mid;
+    }
+    /**
+     * using lower_bound
+     */
+
+    int searchInsert_3(vector<int> &nums, int target)
+    {
+        // auto it = lower_bound(all(nums), target);
+        // return it == nums.end() ? nums.size() : it - nums.begin();
+        //distance(begin(nums), lower_bound(begin(nums), end(nums), target));
+        return lower_bound(nums.begin(), nums.end(), target) - nums.begin();
     }
 };
 int main(int argc, char const *argv[])
