@@ -106,7 +106,8 @@ void testSort()
 int main(int argc, char const *argv[])
 {
     vector<int> a = {2, 4, 1, 23, 5, 76, 0, 43, 24, 65};
-    printVector(a);
-    init_2();
+    vector<int> tmp(7,1);
+    printVector(tmp);
+    // init_2();
     return 0;
 }
