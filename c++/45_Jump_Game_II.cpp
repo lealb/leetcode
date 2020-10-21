@@ -72,7 +72,6 @@ public:
      */
     int jump_4(vector<int> &nums)
     {
-
         int end = 0;
         int farthest = 0;
         int jump = 0;
