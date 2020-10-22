@@ -9,41 +9,19 @@ using namespace std;
 class Solution
 {
 public:
-    int sumArray(vector<int> &nums, int left, int right)
-    {
-        int res;
-        for (int i = left; i <= right; i++)
-        {
-            res += nums[i];
-        }
-        return res;
-    }
     int maxSubArray(vector<int> &nums)
     {
-        int size = nums.size();
+        int size = nums.size(), sum = nums[0], result = nums[0];
         if (1 == size)
         {
-            return nums[0];
+            return result;
         }
-        int res = 0;
-        int left = 0, right = size - 1;
-        while (left <= right)
+        for (int i = 1; i < size; i++)
         {
-            int res = sumArray(nums, left, right);
-            if (res - nums[left + 1] > res)
-            {
-                left++;
-            }
-            else if (res - nums[right - 1] > res)
-            {
-                right--;
-            }
-            else
-            {
-                return sumArray(nums, left, right);
-            }
+            sum = max(nums[i], sum + nums[i]);
+            result = sum > result ? sum : result;
         }
-        return -1;
+        return result;
     }
 };
 int main(int argc, char const *argv[])
