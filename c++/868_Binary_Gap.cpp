@@ -33,7 +33,7 @@ public:
      * Time Complexity: O(logN). 
      * Note that logN is the number of digits in the binary representation of N.
      * Space Complexity: O(logN), the space used by A.
-     */
+     */ 
     int binaryGap_1(int n)
     {
         vector<int> binary(32);
