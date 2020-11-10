@@ -106,7 +106,19 @@ void testSort()
 int main(int argc, char const *argv[])
 {
     vector<int> a = {2, 4, 1, 23, 5, 76, 0, 43, 24, 65};
-    printVector(a);
-    init_2();
+    vector<int> tmp(7, 1);
+    // printVector(tmp);
+    vector<vector<int>> nums = {{1, 4}, {0, 2}, {3, 5}};
+    vector<int> newInterval = {3, 7};
+    nums.emplace(nums.begin() + 3, newInterval);
+    for (int i = 0; i < nums.size(); i++)
+    {
+        for (auto r : nums[i])
+        {
+            cout << r << " ";
+        }
+        cout << endl;
+    }
+    // init_2();
     return 0;
 }
