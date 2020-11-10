@@ -24,29 +24,25 @@ public:
 
     int findMin_1(vector<int> &nums)
     {
-        int numsLen = nums.size();
-        int left = 0, right = numsLen - 1;
-        while (left <= right)
+        int left = 0, right = nums.size() - 1;
+        while (left < right)
         {
             int mid = left + (right - left) / 2;
-            if (nums[mid] >= nums[mid + 1])
-            {
-                return nums[mid + 1];
-            }
-            if (nums[mid - 1] >= nums[mid])
-            {
-                return nums[mid];
-            }
-            if (nums[mid] >= nums[0])
+
+            if (nums[mid] > nums[right])
             {
                 left = mid + 1;
             }
-            else
+            else if (nums[mid] < nums[right])
             {
-                right = mid - 1;
+                right = mid;
+            }
+            else
+            { // when num[mid] and num[right] are same
+                right--;
             }
         }
-        return nums[0];
+        return nums[left];
     }
 };
 int main()
