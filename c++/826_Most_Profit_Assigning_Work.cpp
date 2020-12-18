@@ -19,7 +19,7 @@ public:
      * @param worker 
      * @return int 
      */
-    int maxProfitAssignment(vector<int> &difficulty, vector<int> &profit, vector<int> &worker)
+    int maxProfitAssignment(vector<int> &difficulty, vector<int> &profit, vector<int> &worker) 
     {
         // Make difficult and profit pair vector jobs
         vector<pair<int, int>> jobs;

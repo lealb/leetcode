@@ -41,6 +41,30 @@ public:
         }
         return ans;
     }
+    int minOperations_1(vector<int> &nums, int x)
+    {
+        int n = nums.size();
+        int right = n;
+        int numOps = 0, minOps = n + 1;
+        while (right >= 1 && x > 0)
+        {
+            --right;
+            x -= nums[right];
+        }
+        if (x == 0)
+            minOps = n - right;
+        for (int left = 0; left < n; ++left)
+        {
+            x -= nums[left];
+            for (; right < n and x < 0; ++right)
+                x += nums[right];
+            if (x < 0)
+                break;
+            else if (x == 0)
+                minOps = min(minOps, n - right + left + 1);
+        }
+        return minOps == n + 1 ? -1 : minOps;
+    }
 };
 int main(int argc, char const *argv[])
 {
