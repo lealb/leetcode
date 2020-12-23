@@ -13,50 +13,21 @@ class Solution
 public:
     vector<int> frequencySort(vector<int> &nums)
     {
-        int size = nums.size();
-        unordered_map<int, int> ansMap;
-        for (int i = 0; i < size; ++i)
-        {
-            if (ansMap.find(nums[i]) == ansMap.end())
-            {
-                ansMap.insert({nums[i], 1});
-            }
-            else
-            {
-                ansMap[nums[i]]++;
-            }
-        }
-
-        sort(ansMap.begin(), ansMap.end(), comp);
-        // [](pair<int, int> &m1, pair<int, int> &m2) {
-        //     return m1.second != m2.second ? m1.second < m2.second : m1.first > m2.first;
-        // }
-        vector<int> ans;
-        for (unordered_map<int, int>::iterator it = ansMap.begin(); it != ansMap.end(); it++)
-        {
-            while (it->second--)
-            {
-                ans.push_back(it->first);
-            }
-        }
-        return ans;
-    }
-    static bool comp(pair<int, int> &a, pair<int, int> &b)
-    {
-        return a.second == b.second ? a.first > b.first : a.second < b.second;
-    }
-    vector<int> frequencySort_1(vector<int> &nums)
-    {
-        unordered_map<int, int> map{};
+        unordered_map<int, int> ansMap{};
         for (auto n : nums)
-            map[n]++;
-        vector<pair<int, int>> vec;
-        for (auto p : map)
-            vec.push_back(p);
-        sort(vec.begin(), vec.end(), comp);
-
+        {
+            ansMap[n]++;
+        }
+        vector<pair<int, int>> ansVec;
+        for (auto p : ansMap)
+        {
+            ansVec.push_back(p);
+        }
+        sort(ansVec.begin(), ansVec.end(), [](pair<int, int> &m1, pair<int, int> &m2) {
+            return m1.second != m2.second ? m1.second < m2.second : m1.first > m2.first;
+        });
         vector<int> ans;
-        for (auto p : vec)
+        for (auto p : ansVec)
         {
             while (p.second--)
             {
@@ -65,12 +36,24 @@ public:
         }
         return ans;
     }
+    vector<int> frequencySort_1(vector<int> &nums)
+    {
+        int cnt[201] = {};
+        for (int n : nums)
+        {
+            cnt[n + 100]++;
+        }
+        sort(nums.begin(), nums.end(), [&](int a, int b) {
+            return cnt[a + 100] == cnt[b + 100] ? a > b : cnt[a + 100] < cnt[b + 100];
+        });
+        return nums;
+    }
 };
 int main(int argc, char const *argv[])
 {
     Solution solution;
     vector<int> nums = {-1, 1, -6, 4, 5, -6, 1, 4, 1};
-    vector<int> ans = solution.frequencySort_1(nums);
+    vector<int> ans = solution.frequencySort(nums);
     for (auto &v : ans)
     {
         cout << v << " ";
