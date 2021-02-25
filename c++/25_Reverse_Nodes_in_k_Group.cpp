@@ -59,12 +59,37 @@ public:
         }
         return dummy2->next;
     }
+
+    ListNode *reverseKGroup_2(ListNode *head, int k)
+    {
+        ListNode *cursor = head;
+        for (int i = 0; i < k; i++)
+        {
+            if (cursor == NULL)
+                return head;
+            cursor = cursor->next;
+        }
+
+        ListNode *curr = head;
+        ListNode *prev = NULL;
+        ListNode *next = NULL;
+        for (int i = 0; i < k; i++)
+        {
+            next = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = next;
+        }
+        head->next = reverseKGroup(curr, k);
+        return prev;
+    }
 };
 int main(int argc, char const *argv[])
 {
     Solution solution;
     ListNode *list = generateListNode({1, 4, 5, 7, 8, 10, 12});
-    printListNode(solution.reverseList(list));
+    // printListNode(solution.reverseList(list));
+    printListNode(solution.reverseKGroup(list, 2));
     system("pause");
     return 0;
 }
