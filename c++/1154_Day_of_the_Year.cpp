@@ -17,7 +17,7 @@ public:
             days[1] += 1;
         }
         int resDays = day;
-        for (int i = 0; i < month - 1; ++i)
+        for (int i = 0; i < month - 1; ++i) 
         {
             resDays += days[i];
         }
