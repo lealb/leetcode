@@ -9,7 +9,7 @@ public:
     {
         int step = 1, size = nums.size();
         for (int i = size - 2; i >= 0; --i)
-        {
+        {  
             if (nums[i] >= step)
             {
                 step = 1;
